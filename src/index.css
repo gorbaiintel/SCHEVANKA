@@ -1,0 +1,378 @@
+@import "tailwindcss";
+
+@layer base {
+  :root, [data-theme="obsidian"] {
+    --terminal-bg: #0b0e14;
+    --terminal-surface: #121722;
+    --terminal-surface-hover: #182030;
+    --terminal-border: #1e293b;
+    --terminal-text: #f1f5f9;
+    --terminal-text-muted: #94a3b8;
+    --terminal-accent: #f59e0b;
+    --canvas-bg: #0b0e14;
+    --canvas-grid: #141d2e;
+    --canvas-axis: #64748b;
+  }
+
+  [data-theme="white"] {
+    --terminal-bg: #ffffff;
+    --terminal-surface: #ffffff;
+    --terminal-surface-hover: #f8fafc;
+    --terminal-border: #e2e8f0;
+    --terminal-text: #0f172a;
+    --terminal-text-muted: #475569;
+    --terminal-accent: #d97706;
+    --canvas-bg: #ffffff;
+    --canvas-grid: #f1f5f9;
+    --canvas-axis: #475569;
+  }
+
+  [data-theme="gold"] {
+    --terminal-bg: #100d07;
+    --terminal-surface: #19140a;
+    --terminal-surface-hover: #241d0f;
+    --terminal-border: #382a13;
+    --terminal-text: #fef3c7;
+    --terminal-text-muted: #f59e0b;
+    --terminal-accent: #fbbf24;
+    --canvas-bg: #100d07;
+    --canvas-grid: #281d0c;
+    --canvas-axis: #a16207;
+  }
+
+  [data-theme="cyber"] {
+    --terminal-bg: #070e1b;
+    --terminal-surface: #0c182d;
+    --terminal-surface-hover: #12223f;
+    --terminal-border: #162947;
+    --terminal-text: #e0f2fe;
+    --terminal-text-muted: #7dd3fc;
+    --terminal-accent: #38bdf8;
+    --canvas-bg: #070e1b;
+    --canvas-grid: #112038;
+    --canvas-axis: #0284c7;
+  }
+
+  [data-theme="emerald"] {
+    --terminal-bg: #05130f;
+    --terminal-surface: #0a1f19;
+    --terminal-surface-hover: #0f2c24;
+    --terminal-border: #13392b;
+    --terminal-text: #d1fae5;
+    --terminal-text-muted: #6ee7b7;
+    --terminal-accent: #10b981;
+    --canvas-bg: #05130f;
+    --canvas-grid: #0d291e;
+    --canvas-axis: #059669;
+  }
+
+  [data-theme="light"] {
+    --terminal-bg: #f8fafc;
+    --terminal-surface: #ffffff;
+    --terminal-surface-hover: #f1f5f9;
+    --terminal-border: #cbd5e1;
+    --terminal-text: #0f172a;
+    --terminal-text-muted: #475569;
+    --terminal-accent: #ea580c;
+    --canvas-bg: #f8fafc;
+    --canvas-grid: #e2e8f0;
+    --canvas-axis: #64748b;
+  }
+
+  [data-theme="tokyo_neon"] {
+    --terminal-bg: #0d0919;
+    --terminal-surface: #140e26;
+    --terminal-surface-hover: #1e1538;
+    --terminal-border: #2e1d52;
+    --terminal-text: #f5f3ff;
+    --terminal-text-muted: #a78bfa;
+    --terminal-accent: #06b6d4;
+    --canvas-bg: #0d0919;
+    --canvas-grid: #1a1233;
+    --canvas-axis: #8b5cf6;
+  }
+
+  [data-theme="sakura"] {
+    --terminal-bg: #140d16;
+    --terminal-surface: #1d1220;
+    --terminal-surface-hover: #29192d;
+    --terminal-border: #3b2041;
+    --terminal-text: #fdf2f8;
+    --terminal-text-muted: #f472b6;
+    --terminal-accent: #fb7185;
+    --canvas-bg: #140d16;
+    --canvas-grid: #241428;
+    --canvas-axis: #ec4899;
+  }
+
+  [data-theme="nordic_ice"] {
+    --terminal-bg: #070f18;
+    --terminal-surface: #0c1825;
+    --terminal-surface-hover: #122437;
+    --terminal-border: #1a334e;
+    --terminal-text: #f0f9ff;
+    --terminal-text-muted: #7dd3fc;
+    --terminal-accent: #38bdf8;
+    --canvas-bg: #070f18;
+    --canvas-grid: #0f2338;
+    --canvas-axis: #0284c7;
+  }
+
+  [data-theme="midnight_violet"] {
+    --terminal-bg: #0a0614;
+    --terminal-surface: #110b22;
+    --terminal-surface-hover: #1b1235;
+    --terminal-border: #28184c;
+    --terminal-text: #faf5ff;
+    --terminal-text-muted: #c084fc;
+    --terminal-accent: #a855f7;
+    --canvas-bg: #0a0614;
+    --canvas-grid: #170d2f;
+    --canvas-axis: #9333ea;
+  }
+
+  [data-theme="warm_mocha"] {
+    --terminal-bg: #110c08;
+    --terminal-surface: #19120c;
+    --terminal-surface-hover: #241a12;
+    --terminal-border: #38271a;
+    --terminal-text: #fef3c7;
+    --terminal-text-muted: #d97706;
+    --terminal-accent: #f59e0b;
+    --canvas-bg: #110c08;
+    --canvas-grid: #21160d;
+    --canvas-axis: #b45309;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--terminal-bg);
+    color: var(--terminal-text);
+  }
+
+  code, kbd, samp, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom sleek scrollbar for trading terminal */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--terminal-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--terminal-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Universal White & Light Theme High-Contrast Adaptations */
+[data-theme="white"],
+[data-theme="light"],
+[data-theme="white"] body,
+[data-theme="light"] body {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  color-scheme: light;
+}
+
+[data-theme="white"] header,
+[data-theme="light"] header {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+[data-theme="white"] main,
+[data-theme="light"] main {
+  background-color: #f8fafc !important;
+}
+
+[data-theme="white"] .bg-\[\#0b0e14\],
+[data-theme="light"] .bg-\[\#0b0e14\],
+[data-theme="white"] .bg-\[\#0f141c\],
+[data-theme="light"] .bg-\[\#0f141c\],
+[data-theme="white"] .bg-\[\#0f141c\]\/90,
+[data-theme="light"] .bg-\[\#0f141c\]\/90,
+[data-theme="white"] .bg-\[\#0d121a\],
+[data-theme="light"] .bg-\[\#0d121a\],
+[data-theme="white"] .bg-neutral-900,
+[data-theme="light"] .bg-neutral-900,
+[data-theme="white"] .bg-neutral-900\/90,
+[data-theme="light"] .bg-neutral-900\/90,
+[data-theme="white"] .bg-neutral-900\/80,
+[data-theme="light"] .bg-neutral-900\/80,
+[data-theme="white"] .bg-neutral-900\/60,
+[data-theme="light"] .bg-neutral-900\/60,
+[data-theme="white"] .bg-neutral-900\/40,
+[data-theme="light"] .bg-neutral-900\/40,
+[data-theme="white"] .bg-neutral-950,
+[data-theme="light"] .bg-neutral-950,
+[data-theme="white"] .bg-neutral-950\/90,
+[data-theme="light"] .bg-neutral-950\/90,
+[data-theme="white"] .bg-neutral-950\/80,
+[data-theme="light"] .bg-neutral-950\/80,
+[data-theme="white"] .bg-neutral-950\/70,
+[data-theme="light"] .bg-neutral-950\/70,
+[data-theme="white"] .bg-neutral-950\/60,
+[data-theme="light"] .bg-neutral-950\/60,
+[data-theme="white"] .bg-neutral-950\/40,
+[data-theme="light"] .bg-neutral-950\/40 {
+  background-color: #ffffff !important;
+  color: #0f172a;
+}
+
+[data-theme="white"] .bg-neutral-800,
+[data-theme="light"] .bg-neutral-800,
+[data-theme="white"] .bg-neutral-800\/80,
+[data-theme="light"] .bg-neutral-800\/80,
+[data-theme="white"] .bg-neutral-800\/60,
+[data-theme="light"] .bg-neutral-800\/60 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+[data-theme="white"] .border-neutral-800,
+[data-theme="light"] .border-neutral-800,
+[data-theme="white"] .border-neutral-700,
+[data-theme="light"] .border-neutral-700,
+[data-theme="white"] .border-neutral-900,
+[data-theme="light"] .border-neutral-900,
+[data-theme="white"] .border-neutral-700\/80,
+[data-theme="light"] .border-neutral-700\/80,
+[data-theme="white"] .border-neutral-800\/80,
+[data-theme="light"] .border-neutral-800\/80 {
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="white"] .text-slate-100,
+[data-theme="light"] .text-slate-100,
+[data-theme="white"] .text-slate-200,
+[data-theme="light"] .text-slate-200,
+[data-theme="white"] .text-slate-300,
+[data-theme="light"] .text-slate-300 {
+  color: #0f172a !important;
+}
+
+[data-theme="white"] .text-slate-400,
+[data-theme="light"] .text-slate-400 {
+  color: #475569 !important;
+}
+
+[data-theme="white"] .text-slate-500,
+[data-theme="light"] .text-slate-500 {
+  color: #64748b !important;
+}
+
+[data-theme="white"] .hover\:bg-neutral-800:hover,
+[data-theme="light"] .hover\:bg-neutral-800:hover,
+[data-theme="white"] .hover\:bg-neutral-700:hover,
+[data-theme="light"] .hover\:bg-neutral-700:hover,
+[data-theme="white"] .hover\:bg-neutral-800\/60:hover,
+[data-theme="light"] .hover\:bg-neutral-800\/60:hover {
+  background-color: #f1f5f9 !important;
+}
+
+[data-theme="white"] input,
+[data-theme="light"] input {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+[data-theme="white"] input::placeholder,
+[data-theme="light"] input::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Tokyo Neon Aesthetic Theme Adaptations */
+[data-theme="tokyo_neon"] .bg-\[\#0b0e14\],
+[data-theme="tokyo_neon"] .bg-\[\#0d121a\] {
+  background-color: #0d0919 !important;
+}
+[data-theme="tokyo_neon"] .bg-\[\#0f141c\],
+[data-theme="tokyo_neon"] .bg-\[\#0f141c\]\/90 {
+  background-color: #140e26 !important;
+}
+[data-theme="tokyo_neon"] .border-neutral-800 {
+  border-color: #241642 !important;
+}
+
+/* Sakura Blossom Aesthetic Theme Adaptations */
+[data-theme="sakura"] .bg-\[\#0b0e14\],
+[data-theme="sakura"] .bg-\[\#0d121a\] {
+  background-color: #140d16 !important;
+}
+[data-theme="sakura"] .bg-\[\#0f141c\],
+[data-theme="sakura"] .bg-\[\#0f141c\]\/90 {
+  background-color: #1e1321 !important;
+}
+[data-theme="sakura"] .border-neutral-800 {
+  border-color: #351c3a !important;
+}
+
+/* Nordic Frost Aesthetic Theme Adaptations */
+[data-theme="nordic_ice"] .bg-\[\#0b0e14\],
+[data-theme="nordic_ice"] .bg-\[\#0d121a\] {
+  background-color: #070f18 !important;
+}
+[data-theme="nordic_ice"] .bg-\[\#0f141c\],
+[data-theme="nordic_ice"] .bg-\[\#0f141c\]\/90 {
+  background-color: #0c1825 !important;
+}
+[data-theme="nordic_ice"] .border-neutral-800 {
+  border-color: #172c42 !important;
+}
+
+/* Midnight Nebula Aesthetic Theme Adaptations */
+[data-theme="midnight_violet"] .bg-\[\#0b0e14\],
+[data-theme="midnight_violet"] .bg-\[\#0d121a\] {
+  background-color: #0a0614 !important;
+}
+[data-theme="midnight_violet"] .bg-\[\#0f141c\],
+[data-theme="midnight_violet"] .bg-\[\#0f141c\]\/90 {
+  background-color: #110b22 !important;
+}
+[data-theme="midnight_violet"] .border-neutral-800 {
+  border-color: #241444 !important;
+}
+
+/* Subtle breathing pulse animation for live active order rows */
+@keyframes activeRowPulseProfit {
+  0%, 100% {
+    background-color: rgba(16, 185, 129, 0.035);
+    box-shadow: inset 3px 0 0 rgba(16, 185, 129, 0.6);
+  }
+  50% {
+    background-color: rgba(16, 185, 129, 0.085);
+    box-shadow: inset 4px 0 10px -2px rgba(16, 185, 129, 0.4);
+  }
+}
+
+@keyframes activeRowPulseLoss {
+  0%, 100% {
+    background-color: rgba(244, 63, 94, 0.035);
+    box-shadow: inset 3px 0 0 rgba(244, 63, 94, 0.6);
+  }
+  50% {
+    background-color: rgba(244, 63, 94, 0.085);
+    box-shadow: inset 4px 0 10px -2px rgba(244, 63, 94, 0.4);
+  }
+}
+
+.animate-active-order-profit {
+  animation: activeRowPulseProfit 3.2s ease-in-out infinite;
+}
+
+.animate-active-order-loss {
+  animation: activeRowPulseLoss 3.2s ease-in-out infinite;
+}
+
+

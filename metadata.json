@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix Aura Gold XAU/USD Terminal \u0026 Real-Time Node Chart",
+  "description": "Real-time XAU/USD gold market terminal with interactive structural node charts, liquidity flow analysis, live order book, and algorithmic node strategy visualizer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

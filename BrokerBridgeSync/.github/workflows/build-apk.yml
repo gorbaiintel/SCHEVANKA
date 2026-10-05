@@ -1,0 +1,38 @@
+name: Build Signed Release APK (BrokerBridgeSync)
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Generate Release Keystore
+        run: |
+          keytool -genkey -v -keystore app/release-key.jks -keyalg RSA -keysize 2048 -validity 10000 \
+            -alias brokerbridge -storepass schevanka123 -keypass schevanka123 \
+            -dname "CN=Schevanka Terminal, OU=Quant, O=Schevanka, L=Jakarta, S=DKI, C=ID"
+
+      - name: Build Signed Release APK with Gradle
+        run: |
+          gradle assembleRelease --no-daemon
+
+      - name: Upload Signed Release APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: BrokerBridgeSync-release-apk
+          path: app/build/outputs/apk/release/*.apk

@@ -1,0 +1,35 @@
+name: Build & Release SCHEVANKA Gold Terminal + Signed Android APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Signed Android APKs, Production Web Bundle & Full Archive ZIP
+        run: npm run build
+
+      - name: Upload Build Artifacts (Dist + Signed APKs + Full ZIP)
+        uses: actions/upload-artifact@v4
+        with:
+          name: SCHEVANKA-Gold-Terminal-Full-Artifacts
+          path: |
+            SCHEVANKA-Gold-Terminal-Full-Build.zip
+            public/BrokerBridgeSync-v1.0.0-signed.apk
+            public/SCHEVANKA-Gold-Terminal-v1.0.0-signed.apk
+            SCHEVANKA_ARCHITECTURE_AND_OVERLAY_INDICATORS_FULL.md
+            dist/
